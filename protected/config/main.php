@@ -40,6 +40,7 @@ return array(
 			'username' => 'root',
 			'password' => '123456',
 			'charset' => 'utf8',
+			'tablePrefix' => 'wx_',
 		),
 		'redis' => array(
 			'class' => 'application.extensions.redis.ARedisConnection',

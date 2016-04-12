@@ -1,5 +1,5 @@
 <?php
-$this->pageTitle = '妙计微信后台 v1.0';
+$this->pageTitle = '微信生活服务平台 v1.0';
 ?>
 <header class="navbar-wrapper">
 	<div class="navbar navbar-fixed-top">

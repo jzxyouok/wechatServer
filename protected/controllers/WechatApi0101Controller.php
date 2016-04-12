@@ -5,6 +5,9 @@
  * @CreateTime: 16/3/22 下午5:56
  */
 
+//w系列 --> 微信官方接口
+//s系列 --> 带参数二维码接口
+
 class WechatApi0101Controller extends Controller
 {
     /**
@@ -152,6 +155,10 @@ class WechatApi0101Controller extends Controller
         var_dump($result);
     }
 
+    /**
+     * 自定义菜单
+     * @return array|mixed
+     */
     private function w004()
     {
         $query = $_POST['query'];
@@ -185,6 +192,13 @@ class WechatApi0101Controller extends Controller
 
         end:
         return $re;
+    }
+
+    private function s001()
+    {
+        $result = SceneTotal::model()->getTotalData();
+
+        return $result;
     }
 
 }

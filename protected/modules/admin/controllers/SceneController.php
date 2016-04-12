@@ -8,24 +8,12 @@
 class SceneController extends Controller
 {
     /**
-     * 带参数二维码场景统计
+     * 场景值统计
      * @return void
      */
     public function actionSceneTotal()
     {
-        //$total_data = Yii::app()->db->createCommand()
-        //    ->select('sct.scene_id,sc.scene_remark,count(*) total_num,sct.timeint')
-        //    ->from('wx_scene_total sct')
-        //    ->leftJoin('wx_scene sc', 'sct.scene_id=sc.scene_id')
-        //    ->where('sct.event=:event', array(':event' => 'subscribe'))
-        //    ->group("sct.scene_id,DATE_FORMAT(sct.timeint, '%Y-%m-%d')")
-        //    ->queryAll();
-
-        $total_data = array();
-
-        $this->render('sceneTotal', array(
-            'total_data' => $total_data,
-        ));
+        $this->render('sceneTotal');
     }
 
     /**
@@ -34,13 +22,11 @@ class SceneController extends Controller
      */
     public function actionSceneManagement()
     {
-        //$scene_data = Yii::app()->db->createCommand()
-        //    ->select('*')
-        //    ->from('wx_scene')
-        //    ->order('timeint desc')
-        //    ->queryAll();
-
-        $scene_data = array();
+        $scene_data = Yii::app()->db->createCommand()
+            ->select('*')
+            ->from('wx_scene')
+            ->order('timeint desc')
+            ->queryAll();
 
         $scene_count = count($scene_data);
 

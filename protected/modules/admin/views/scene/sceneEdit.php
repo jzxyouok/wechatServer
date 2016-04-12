@@ -38,11 +38,6 @@
     <?php } ?>
 </article>
 
-<script type="text/javascript" src="/resource/admin/lib/jquery.validation/1.14.0/jquery.validate.min.js"></script>
-<script type="text/javascript" src="/resource/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
-<script type="text/javascript" src="/resource/admin/lib/jquery.validation/1.14.0/messages_zh.min.js"></script>
-
-
 <script type="text/javascript">
     $(function(){
         $("#form-scene-add").validate({

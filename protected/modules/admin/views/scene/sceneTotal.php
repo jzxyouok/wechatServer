@@ -21,31 +21,47 @@
         </thead>
         <tbody>
 
-        <?php if (is_array($total_data) && !empty($total_data)) {
-                foreach ($total_data as $k => $v) {
-            ?>
         <tr class="text-c">
-            <td><?php echo $k + 1 ?></td>
-            <td width="30%"><?php echo $v['scene_id'] ?></td>
-            <th><?php echo $v['scene_remark'] ?></th>
-            <td><?php echo $v['total_num'] ?></td>
-            <td><?php echo date('Y-m-d', $v['timeint']) ?></td>
+            <td>abcdefg</td>
+            <td>abcdefg</td>
+            <td>abcdefg</td>
+            <td>abcdefg</td>
+            <td>abcdefg</td>
         </tr>
-        <?php }} ?>
 
         </tbody>
     </table>
-
-    <script>
-        function management_scene(title,url){
-            var index = layer.open({
-                type: 2,
-                title: title,
-                content: url
-            });
-            layer.full(index);
-        }
-    </script>
-
-
 </div>
+
+<script>
+    function management_scene(title,url){
+        var index = layer.open({
+            type: 2,
+            title: title,
+            content: url
+        });
+        layer.full(index);
+    }
+
+    $(function(){
+        $.ajax({
+            type: 'POST',
+            url: '/WechatApi0101',
+            dataType: 'json',
+            data: {method: 's001', query: ''},
+            success: function(data){
+                console.log(data);
+
+
+            },
+            error: function(){
+                alert('error');
+            }
+        });
+    });
+
+
+
+
+
+</script>
