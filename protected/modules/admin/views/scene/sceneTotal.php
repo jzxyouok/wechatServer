@@ -1,5 +1,5 @@
 
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 市场推广 <span class="c-gray en">&gt;</span> 带参数二维码场景统计  <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 带参数二维码场景值统计  <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 
 <div class="page-container">
     <div>
@@ -19,16 +19,8 @@
             <th>时间</th>
         </tr>
         </thead>
-        <tbody>
-
-        <tr class="text-c">
-            <td>abcdefg</td>
-            <td>abcdefg</td>
-            <td>abcdefg</td>
-            <td>abcdefg</td>
-            <td>abcdefg</td>
-        </tr>
-
+        <tbody class="data_show">
+            <!--#data_tpl-->
         </tbody>
     </table>
 </div>
@@ -50,18 +42,28 @@
             dataType: 'json',
             data: {method: 's001', query: ''},
             success: function(data){
-                console.log(data);
-
-
+                if (data.error.error_id == 0) {
+                    var html = juicer($('#data_tpl').html(), data);
+                    $('.data_show').html(html);
+                } else {
+                    console.log(data);
+                }
             },
             error: function(){
-                alert('error');
+                console.log('error');
             }
         });
     });
+</script>
 
-
-
-
-
+<script id="data_tpl" type="text/template">
+    {@each data as item,index}
+    <tr class="text-c">
+        <td>${item.id}</td>
+        <td>${item.scene_id}</td>
+        <td>remark</td>
+        <td>num</td>
+        <td>${item.timeint}</td>
+    </tr>
+    {@/each}
 </script>

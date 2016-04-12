@@ -196,7 +196,8 @@ class WechatApi0101Controller extends Controller
 
     private function s001()
     {
-        $result = SceneTotal::model()->getTotalData();
+        $result = WechatError::$normal;
+        $result['data'] = json_decode(SceneTotal::getTotalData(), true);
 
         return $result;
     }

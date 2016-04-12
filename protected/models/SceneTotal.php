@@ -17,7 +17,7 @@ class SceneTotal extends CActiveRecord
         return '{{scene_total}}';
     }
 
-    public function getTotalData()
+    public static function getTotalData()
     {
         //$total_data = Yii::app()->db->createCommand()
         //    ->select('sct.scene_id,sc.scene_remark,count(*) total_num,sct.timeint')
@@ -27,8 +27,12 @@ class SceneTotal extends CActiveRecord
         //    ->group("sct.scene_id,DATE_FORMAT(sct.timeint, '%Y-%m-%d')")
         //    ->queryAll();
 
-        $result = WechatError::$normal;
-        $result['data'] = self::model()->findAll('event=:event', array(':event' => 'subscribe'));
+        $data = self::model()->findAll(array(
+            'condition' => 'event=:event',
+            'params' => array(':event' => 'subscribe'),
+        ));
+
+        $result = CJSON::encode($data);
 
         return $result;
     }
