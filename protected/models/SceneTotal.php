@@ -32,9 +32,11 @@ class SceneTotal extends CActiveRecord
             'params' => array(':event' => 'subscribe'),
         ));
 
-        $result = CJSON::encode($data);
+        foreach ($data as $k => $v) {
+            $data[$k] = $v->getAttributes();
+        }
 
-        return $result;
+        return $data;
     }
 
 

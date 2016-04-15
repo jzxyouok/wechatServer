@@ -59,7 +59,7 @@
 <script id="data_tpl" type="text/template">
     {@each data as item,index}
     <tr class="text-c">
-        <td>${item.id}</td>
+        <td>${index}</td>
         <td>${item.scene_id}</td>
         <td>remark</td>
         <td>num</td>

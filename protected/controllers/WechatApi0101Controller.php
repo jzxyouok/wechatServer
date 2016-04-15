@@ -17,7 +17,7 @@ class WechatApi0101Controller extends Controller
     public function actionIndex()
     {
         if (!isset($_POST['method']) || !isset($_POST['query'])) {
-            $result = WechatError::$index_request_error;
+            $re = WechatError::$index_request_error;
             goto end;
         }
 
@@ -26,14 +26,14 @@ class WechatApi0101Controller extends Controller
         $method = $_POST['method'];
 
         if (method_exists($this, $method)) {
-            $result = $this->$method();
+            $re = $this->$method();
 
         } else {
-            $result = WechatError::$miss_method;
+            $re = WechatError::$miss_method;
         }
 
         end:
-        echo json_encode($result);
+        echo json_encode($re);
         exit;
     }
 
@@ -197,7 +197,7 @@ class WechatApi0101Controller extends Controller
     private function s001()
     {
         $result = WechatError::$normal;
-        $result['data'] = json_decode(SceneTotal::getTotalData(), true);
+        $result['data'] = SceneTotal::getTotalData();
 
         return $result;
     }
